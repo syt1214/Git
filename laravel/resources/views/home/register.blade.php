@@ -49,8 +49,8 @@
                                     <br>
                                 </li>
                                 <li>
-                                    <input style="width:125px;" class="check_re" type="text" name="checkcode" placeholder="验证码">
-                                    <input class="acq_check" style="width:100px;height:35px;cursor:pointer;border:none;" value="获取验证码">
+                                    <input style="width:130px;" class="check_re" type="text" name="checkcode" placeholder="验证码">
+                                    <button class="acq_check" style="width:80px;height:35px;"><a href="{{url('user/getcode')}}">获取验证码</a></button>
                                 </li>
                                 <li>
                                     <div class="clr u-chk">

@@ -17,3 +17,5 @@ Route::get('home/register', function () {
     return view('home.register');
 });
 Route::any('user/reg','Home\UserRegController@Check');
+Route::get('user/getcode','Home\UserRegController@GetCode');
+
