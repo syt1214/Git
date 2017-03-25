@@ -14,7 +14,7 @@ class CreateTempCodeTable extends Migration
     public function up()
     {
         Schema::create('temp_codes', function (Blueprint $table) {
-            $table->integer('phone');
+            $table->string('phone');
             $table->integer('code');
             $table->integer('deadtime');
         });

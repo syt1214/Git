@@ -13,9 +13,9 @@
                     <img class="pg-logo" src="{{url('images/20150109151228_wzrfg.png')}}" alt="logo" />
                 </a>
                 <div class="pg-logbtns">
-                    <a class="pg-reg active" href="/reg/">注册</a>
+                    <a class="pg-reg active" href="{{url('home/register')}}">注册</a>
                     <span>|</span>
-                    <a class="pg-log" href="/login/">登录</a>
+                    <a class="pg-log" href="{{url('home/login')}}">登录</a>
                 </div>
             </div>
         </div>
@@ -45,12 +45,12 @@
 
                                 </li>
                                 <li>
-                                    <p><input class="phone_re" type="text" name="phone" placeholder="手机号" onblur="checkPhone()"><span id="pspan"></span></p>
+                                    <p><input class="phone_re" id="phone"type="text" name="phone" placeholder="手机号" onblur="checkPhone()"><span id="pspan"></span></p>
                                     <br>
                                 </li>
                                 <li>
                                     <input style="width:130px;" class="check_re" type="text" name="checkcode" placeholder="验证码">
-                                    <button class="acq_check" style="width:80px;height:35px;"><a href="{{url('user/getcode')}}">获取验证码</a></button>
+                                    <input class="acq_check" style="width:80px;height:35px;padding-left:20px;cursor:pointer;"value="获取验证码">
                                 </li>
                                 <li>
                                     <div class="clr u-chk">

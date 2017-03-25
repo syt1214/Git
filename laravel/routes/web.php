@@ -16,6 +16,10 @@ Route::get('/', function () {
 Route::get('home/register', function () {
     return view('home.register');
 });
+Route::get('home/login', function () {
+    return view('home.login');
+});
 Route::any('user/reg','Home\UserRegController@Check');
-Route::get('user/getcode','Home\UserRegController@GetCode');
+Route::any('user/login','Home\LoginController@DoLogin');
+Route::any('/getcode','Home\UserRegController@GetCode');
 

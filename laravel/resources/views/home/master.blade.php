@@ -12,9 +12,10 @@
     <link href="{{'http://www.duitang.com/favicon.ico" rel="SHORTCUT ICON'}}" />
     <link rel="stylesheet" type="text/css" href="{{url('css/lib.8551015b.css')}}">
     <link href="{{url('css/login.d1283f99.css')}}" rel="stylesheet" />
+    <script src="{{url('js/jquery-1.8.3.min.js')}}"></script>
 {{--    <link href="{{url('dist/css/bootstrap.css')}}" rel="stylesheet">--}}
     @yield('style')
-    <script src="{{url('js/jquery-1.8.3.min.js')}}"></script>
+
 </head>
 <body>
         @yield('content')
