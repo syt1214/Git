@@ -1,22 +1,19 @@
 
 @extends('home/master')
-@section('title','登录')
+@section('title','堆糖生活家--登录')
 @section('style')
     <link rel="stylesheet" href="{{url('css/guide.5f5b49b9.css')}}">
+    <style>
+        #dt-header
+        {
+            opacity:0.6;
+        }
+    </style>
 @endsection
 @section('content')
 <div class="section section1" style="width:100%;height:650px;position: relative;top:100px;opacity:0.6;">
     <img class="pg-next-page" src="{{url('images/20160819111217_jcekk.png')}}" />
-    <div id="dt-header" style="position: absolute;top: 0;width: 100%;">
-        <div class="dt-wrap clr">
-            <a id="dt-logo" href="/">堆糖</a>
-            <div id="dt-header-right">
-                <a id="dt-login" class="dt-head-cat" href="{{url('home/login')}}">登录</a>
-                <div class="dt-vline"></div>
-                <a id="dt-register" class="dt-btn dt-head-cat" href="{{url('home/register')}}">注册</a>
-            </div>
-        </div>
-    </div>
+
     <div style="text-align: center;margin-top: -100px;">
         <div class="pg-mac-img fadeUpS speed2 animate" style="width: 100%;height: 0;padding-bottom: 67.167%;background: url({{url('images/20160818104653_vsauu_1.png')}}) no-repeat;background-size: 100% 100%;">
         </div>
@@ -35,31 +32,36 @@
             <div id="poplogin" class="win-wraper clr">
                 <div class="login clr">
                     <div class="cont">
-                        <form id="dt-form-login" method="post" action="{{url('user/login')}}" target="_self">
+                        <form id="dt-form-login" method="post" action="{{url('user/login')}}"return flag>
                             {{csrf_field()}}
                             <div class="dt-unme cnt-i clr">
                                 <input type="text" name="login_phone" placeholder="手机号">
                             </div>
+                            <span>{{$errors->first('login_phone')}}</span>
                             <div class="dt-pswd cnt-i clr">
                                 <input type="password" id="p-password" name="login_pass" placeholder="密码">
                             </div>
-                            <div class="dt-ccode cnt-i clr">
-                                <input type="text" placeholder="验证码" name="ccode" class="ccode"><img src="" class="dt-ccodepic"></div>
+                            <span>{{$errors->first('login_pass')}}</span>
+
+                            <div class="checkcode" style="margin-bottom:20px;">
+                                <input type="text" placeholder="验证码" name="code"style="width:120px;height:35px;position:relative;top:20px;">
+                                <div style="float:right;"><img src="{{captcha_src()}}" alt=""style="margin-top:20px;margin-left:15px;cursor:pointer;" id="code"></div>
+                            </div>
+                            <span>{{$errors->first('code')}}</span>
                             <div class="u-chk clr">
-                                <input class="dn" name="token" value="">
                                 <input class="chk" type="checkbox" name="remember" id="poplogin-rem" value="" checked="">
-                                <label for="poplogin-rem">记住我</label><a href="/getpasswd/" class="r">忘记密码？</a></div>
+                                <label for="poplogin-rem">记住我</label><a href="" style="position: relative;left: 100px;">忘记密码？</a></div>
                             <div class="submit clr">
-                                <a class="abtn l" href="{{url('home/register')}}" onmousedown="$.G.gaq('/_trc/Login/pop/direct');" id="loginbtn">
+                                <a class="abtn l" href="{{url('home/register')}}" id="loginbtn">
                                     <button type="submit" class="pg-loginbtn"><u>登录</u></button>
                                 </a>
                             </div>
                         </form>
                         <div class="pg-reg">
-                            <a class="qqsite" href="" onmousedown="$.G.gaq('/_trc/Login/pop/connect_qq');">
-                                <i class="pg-QQ"></i></a><a class="weibo" href="" onmousedown="$.G.gaq('/_trc/Login/pop/connect_sina');"><i class="pg-weibo"></i></a>
-                            <a class="douban" href="" onmousedown="$.G.gaq('/_trc/Login/pop/connect_douban');">
-                                <i class="pg-douban"></i></a><a class="taobao" href="" onmousedown="$.G.gaq('/_trc/Login/pop/connec t_taobao');"><i class="pg-taobao"></i></a><a class="qweibo" href="" onmousedown="$.G.gaq('/_trc/Login/pop/connect_qweibo');"><i class="pg-qqweibo"></i></a></div>
+                            <a class="qqsite" href="" >
+                                <i class="pg-QQ"></i></a><a class="weibo" href="" ><i class="pg-weibo"></i></a>
+                            <a class="douban" href="" >
+                                <i class="pg-douban"></i></a><a class="taobao" href="" ><i class="pg-taobao"></i></a><a class="qweibo" href="" onmousedown="$.G.gaq('/_trc/Login/pop/connect_qweibo');"><i class="pg-qqweibo"></i></a></div>
                     </div>
                     <div class="sites">
                         <div class="clr" style="height:314px;width:200px;padding:0 0 14px;">
@@ -75,4 +77,44 @@
         </div>
     </div>
 </div>
+<script>
+    $(".checkcode img").click(function () {
+        $("#code").attr('src',"{{captcha_src()}}"+Math.random());
+    });
+
+    //用户登录
+    $("#dt-form-login").submit(function () {
+        //数据验证
+        //获取数据
+        var data= $(this).serialize();
+        console.log(data);
+        $.ajax({
+            type:'post',
+            dataType:'json',
+            data:data,
+            url:'{{url('user/login')}}',
+            success:function (data) {
+                if (data.status == 1) {
+                    alert(data.message);
+                    return
+                }
+                if (data.status == 2) {
+                    alert(data.message);
+                    return
+                }
+                if (data.status == 3) {
+                    alert(data.message);
+                    return
+                }
+                if (data.status == 4) {
+                    alert(data.message);
+                    return
+                }
+
+                location.href = "{{url('home/login')}}";
+            }
+        })
+        return false;
+    });
+</script>
 @endsection

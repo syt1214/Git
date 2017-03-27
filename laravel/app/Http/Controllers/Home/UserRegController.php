@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Home;
 
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
-use Validator;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 use App\Model\send;
-//use App\Model\REST;
+use App\Model\RTResult;
 class UserRegController extends Controller
 {
     public function Check(Request $request)
@@ -22,28 +23,36 @@ class UserRegController extends Controller
         $code = $request->input('checkcode');
         $recode = DB::table('temp_codes')->where('phone', $reg_phone)->get();
         $deadtime = DB::table('temp_codes')->where('phone', $reg_phone)->get();
-//        if($code!=$recode)
-//        {
-//          $res['status'] = 0;
-//          $res['mess'] = '验证码输入不正确';
-//          return json_encode($res);
-//        }
-//        if($time-$deadtime>300)
-//        {
-//            $res['status'] = 1;
-//            $res['mess'] = '验证码超时';
-//            return json_encode($res);
-//        }
-//        else {
+        $rt_result = new RTResult;
+        if($reg_name=='') {
+            $rt_result->status = 1;
+            $rt_result->message = '亲，用户名不能为空哦';
+            return $rt_result->toJson();
+        }
+        if($reg_pass=='') {
+            $rt_result->status = 2;
+            $rt_result->message = '亲，密码不能为空哦';
+            return $rt_result->toJson();
+        }
+        if($code=='') {
+            $rt_result->status = 3;
+            $rt_result->message = '亲，验证码不能为空哦';
+            return $rt_result->toJson();
+        }
+        if($code!=$recode) {
+            $rt_result->status = 4;
+            $rt_result->message = '验证码错误哦，请重新输入吧！';
+            return $rt_result->toJson();
+        }
+//        die;
         $result = DB::table('users')->insert([
             'username' => $reg_name,
-            'password' => $reg_pass,
+            'password' =>$reg_pass,
             'phone' => $reg_phone,
             'email' => $reg_email,
             'regtime' => $time,
         ]);
-//        dd($result);
-//        }
+        dd($result);
         return view('home/login');
     }
 
@@ -61,12 +70,12 @@ class UserRegController extends Controller
         }
         //调用发送短信方法
         $sendTemplateSMS=new send();
-        $sendTemplateSMS->sendTemplateSMS($phone, array($code, 5), "1");die;
+        $sendTemplateSMS->sendTemplateSMS($phone, array($code, 5), "1");
         $result=DB::table('temp_codes')->insert([
             'phone'=>$phone,
             'code'=>$code,
             'deadtime'=>$deadtime,
         ]);
-        dump($result);
+        dd($result);
     }
 }

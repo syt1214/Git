@@ -14,7 +14,7 @@ class CreateHeadTable extends Migration
     public function up()
     {
         Schema::create('headpics', function (Blueprint $table) {
-            $table->increments('uid');
+            $table->increments('user_id');
             $table->string('head');
         });
     }

@@ -10,19 +10,19 @@ class PersonInfoController extends Controller
     public function PersonInfo(Request $request)
     {
         $phone=$request->session()->get('phone');
-        $uid=$request->session()->get('uid');
+        $user_id=$request->session()->get('user_id');
        $username=DB::table('users')->where('phone',$phone)->select('username')->get();
        $sex=$request->input('sex');
        $description=$request->input('description');
-//       dd($uid);
+//       dd($user_id);
 //       dd($username);
         $result=DB::table('personals')->insert([
-            'uid'=>$uid,
+            'user_id'=>$user_id,
             'username'=>$username,
             'sex'=>$sex,
             'description'=>$description,
         ]);
-        dd($result);
+//        dd($result);
         return view('home/homepage');
     }
 }

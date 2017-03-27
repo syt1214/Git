@@ -32,187 +32,11 @@
     </style>
 @endsection
 @section('content')
-<div id="header">
-    <div id="header-wrap">
-        <div id="dt-header">
-            <div class="dt-wrap">
-                <a id="dt-logo" href="/">堆糖</a>
-                <div id="dt-nav">
-                    <div id="dt-nav-btn-cover"></div>
-                    <div id="dt-nav-btn">
-                        分类 <i></i>
-                    </div>
-                    <div id="dt-nav-content-cover"></div>
-                    <div id="dt-nav-content" class="clr">
-                        <div id="dt-nav-left">
-                            <div class="dt-nav-group">
-                                <p>
-                                    <a href="/">首页</a>
-                                </p>
-                                <p>
-                                    <a id="dt-nav-hot-link" href="">热门</a>
-                                </p>
-                            </div>
-                            <div class="dt-nav-group" style="margin-top: -30px;">
-                                <p>
-                                    <a href="">良品购</a>
-                                </p>
-                            </div>
-                        </div>
-                        <div id="dt-nav-right">
-                            <div id="dt-nav-right-inner">
-                                <div class="dt-nav-group">
-                                    <a href="">家居生活</a>
-                                    <div class="dt-nav-vline"></div>
-                                    <a href="">美食菜谱</a>
-                                    <div class="dt-nav-vline"></div>
-                                    <a href="">手工DIY</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="dt-nav-neck"></div>
-                </div>
-                <div id="dt-search">
-                    <form action="">
-                        <input class="ipt" id="kw" autocomplete="off" name="kw" type="text" placeholder="搜索感兴趣的内容">
-                        <input id="type" type="hidden" name="type" value="feed">
-                        <button type="submit">搜索</button>
-                    </form>
-                    <div id="dt-search-list">
-                        <div class="dt-search-line">
-                            搜索含
-                            <span class="red"></span> 的内容
-                        </div>
-                        <div class="dt-search-line">
-                            搜索含
-                            <span class="red"></span> 的商品
-                        </div>
-                        <div class="dt-search-line">
-                            搜索含
-                            <span class="red"></span> 的专辑
-                        </div>
-                        <div class="dt-search-line">
-                            搜索含
-                            <span class="red"></span> 的糖人
-                        </div>
-                    </div>
-                </div>
-                <div id="dt-header-right">
-                    <div id="dt-account" class="dt-has-menu dt-head-cat">
-                        <a class="dt-account-btn" href="">
-                            <img class="dt-avatar" src="{{url('20170316113128_QTEiN.thumb.48_48_c.jpeg')}}">
-                            <span>我的堆糖</span> <i></i>
-                        </a>
-                        <div class="dt-menu">
-                            <div class="dt-menu-inner dt-menu-mini">
-                                <a id="mynavtools-home" href="">
-                                    <i></i> 个人主页
-                                </a>
-                                <a id="mynavtools-setting" href="">
-                                    <i></i> 账号设置
-                                </a>
-                                <div class="dt-menu-bottom">
-                                    <a id="mynavtools-logout" href="{{url('home/login')}}">
-                                        <i></i> 退出
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="dt-vline"></div>
-                    <div id="dt-notification" class="dt-has-menu dt-head-cat">
-                        <a class="dt-notification-btn" href="{{url('')}}">消息</a>
-                        <div class="dt-menu-message dt-co-menu">
-                            <div class="dt-menu-inner-notifi">
-                                <div class="dt-menu-inner-nav clr">
-                                    <div class="dt-menu-inner-nav-tab tab-highlight">
-                                        <span>提醒</span>
-                                        <i class="dt-tab-numclean"></i>
-                                        <i class="dt-tab-realnum"></i>
-                                        <p class="dt-tab-hidenum" data-cleanname="blog_forward_count"></p>
-                                        <p class="dt-tab-hidenum" data-cleanname="album_favorite_count"></p>
-                                        <p class="dt-tab-hidenum" data-cleanname="blog_like_count"></p>
-                                        <p class="dt-tab-hidenum" data-cleanname="blog_comment_count"></p>
-                                    </div>
-                                    <div class="dt-menu-inner-nav-tab">
-                                        <span>共建专辑</span>
-                                        <i class="dt-tab-numclean"></i>
-                                        <i class="dt-tab-realnum"></i>
-                                    </div>
-                                    <div class="dt-menu-inner-nav-tab">
-                                        <span>私信</span>
-                                        <i class="dt-tab-numclean"></i>
-                                        <i class="dt-tab-realnum"></i>
-                                    </div>
-                                    <div class="dt-menu-inner-nav-tab">
-                                        <span>好友</span>
-                                        <i class="dt-tab-numclean dt-tab-numclean4" data-cleanname="recommend_friend_count"></i>
-                                        <i class="dt-tab-realnum"></i>
-                                    </div>
-                                </div>
-                                <div class="dt-menu-inner-content">
-                                    <!-- 提醒 -->
-                                    <div class="dt-menu-inner-content-item dt-menu-inner-content-item1">
-                                        <ul class="dt-inner-content dt-all"></ul>
-                                    </div>
-                                    <!-- 共建专辑 -->
-                                    <div class="dt-menu-inner-content-item dt-menu-inner-content-item2">
-                                        <ul class="dt-inviter"></ul>
-                                        <ul class="dt-coalbum"></ul>
-                                        <!-- <p class="dt-item2-inviter_num"></p>
-<p class="dt-item2-coalbum_num"></p>
--->
-                                    </div>
-                                    <!-- 私信 -->
-                                    <div class="dt-menu-inner-content-item dt-menu-inner-content-item3">
-                                        <ul class="dt-message"></ul>
-                                    </div>
-                                    <!-- 好友 -->
-                                    <div class="dt-menu-inner-content-item dt-menu-inner-content-item4">
-                                        <ul class="dt-friend"></ul>
-                                    </div>
-                                </div>
-                                <div class="dt-menu-inner-bottom">
-                                    <a class="dt-bottom-location" href="">查看全部消息></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="dt-vline"></div>
-                    <a class="dt-trend dt-head-cat" href="">关注动态</a>
-                    <div class="dt-vline"></div>
-                    <div class="dt-has-menu dt-head-cat">
-                        <a class="dt-dreamer-a" id="dt-lifer" href="" target="_blank" onmousedown="$.G.hmt('/lifeartist/home_top_entrance/')">堆糖生活家</a>
-                        <span class="dt-dreamer">new</span>
-                    </div>
-                    <div class="dt-vline"></div>
-                    <div id="dt-add" class="dt-has-menu dt-head-cat">
-                        <a class="dt-add-btn" href="javascript:;">发布</a>
-                        <div class="dt-menu">
-                            <div class="dt-menu-inner">
-                                <a id="mynavtools-local" href="javascript:;">
-                                    <i></i> 上传图片
-                                </a>
-                                <a id="mynavtools-src" href="/about/collectit/">
-                                    <i></i> 抓取网页图片
-                                </a>
-                                <a id="mynavtools-create" href="javascript:;">
-                                    <i></i> 创建专辑
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="dt-header-btm"></div>
-    </div>
-</div>
+
 <div id="content" style="margin-left:200px;">
     <div class="block" id="block">
         <div class="box">
-            <h2><a href="">我的堆糖</a>&nbsp;>&nbsp;<a href="javascript:;">账号设置</a>&nbsp;>&nbsp;<a href="" class="changename">基本信息</a></h2>
+            <h2><a href="">我的堆糖</a>&nbsp;>&nbsp;<a href="javascript:;">账号设置</a>&nbsp;>&nbsp;<a href=""class="changename" id="changename">基本信息</a></h2>
         </div>
         <div class="pb8 set-mt15">
             <ul class="ctr-sw">
@@ -239,7 +63,7 @@
                             <form id="form-headimg" method="post" action="{{url('user/head')}}" enctype="multipart/form-data">
                                 {{csrf_field()}}
                                 {{--<input type="file" hidefocus="true" name="img">--}}
-                                <input type="hidden" name="uid" value="{{$uid}}"/>
+                                <input type="hidden" name="user_id" value="{{$user_id}}"/>
                                 {{--<iframe name="alupifr" src="about:blank" class="dn" scrolling="no" frameborder="0" height="0" width="0">--}}
                                 {{--</iframe><input type="hidden" name="type" value="avatar"/>--}}
                                 <span class="button">
@@ -322,8 +146,8 @@
         <!-- edit_passwd -->
         <form action="{{url('user/setpass')}}" method="post" name="myform">
             {{csrf_field()}}
-        <div class="hset set-pwd set-password" id="set-password"style="display:none">
-                <table class="tableform" cellspacing="0" cellpadding="0">
+        <div class="hset set-pwd set-password" id="set-password"style="display:none;">
+                <table class="tableform" cellspacing="5" cellpadding="5">
                         <tr>
                            <th>当前密码</th>
                             <td>
@@ -344,6 +168,14 @@
                             </td>
                             <td class="pswerror" style="color:red">&nbsp;</td>
                         </tr>
+                    <tr>
+                        <th>验证码</th>
+                        <td>
+                            <input class="ipt" type="text" placeholder="验证码" name="code" style="position: relative;top:-15px;">
+                            <img src="{{captcha_src()}}" alt=""id="code">
+                            <span>{{$errors->first('code')}}</span>
+                        </td>
+                    </tr>
                         <tr>
                             <td>&nbsp;</td>
                             <td>
@@ -360,11 +192,10 @@
     </div>
 </div>
 <script>
-    var newpass=document.getElementById('newpass').value;
-    var renewpass=document.getElementById('renewpass').value;
     var repass=document.getElementById('renewpass');
     repass.onblur=function() {
-        console.log(newpass);
+        var newpass=document.getElementById('newpass').value;
+        var renewpass=document.getElementById('renewpass').value;
         if (newpass != renewpass) {
             alert('亲，你输入的两次密码不一致哦，请重新输入吧');
         }
@@ -425,6 +256,7 @@
 <script type="text/javascript">
     var info=document.getElementById('info');
     var updatepass=document.getElementById('updatepass');
+    var changename=document.getElementById('changename');
     var div1=document.getElementById('set-info');
     var div2=document.getElementById('set-password');
     info.onclick=function()
@@ -436,6 +268,8 @@
     }
     updatepass.onclick=function()
     {
+        console.log(changename.innerHTML);
+        changename.innerHTML="修改密码";
         updatepass.style.color='red';
         info.style.color='#5678A0';
         div1.style.display='none';

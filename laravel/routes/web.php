@@ -25,8 +25,8 @@ Route::get('home/homepage', function () {
 Route::get('home/personal', function () {
     return view('home.personal');
 });
-Route::any('user/reg','Home\UserRegController@Check');
-Route::any('user/login','Home\LoginController@DoLogin');
+Route::post('user/reg','Home\UserRegController@Check');
+Route::post('user/login','Home\LoginController@DoLogin');
 Route::any('/getcode','Home\UserRegController@GetCode');
 Route::any('user/head','Home\GetHeadController@GetHead');
 Route::any('user/personinfo','Home\PersonInfoController@PersonInfo');
@@ -34,3 +34,7 @@ Route::any('user/setpass','Home\SetPassController@SetPass');
 
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');

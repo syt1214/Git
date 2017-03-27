@@ -1,15 +1,16 @@
 window.onload = function() {
     $(".acq_check").click(function yanzheng(e) {
         var phone=$('#phone').val();
+        // alert(phone);
+        if (phone == '') {
+            alert('手机号不能为空');
+            return;
+        }
         $.ajax({
             url:'/getcode',
             data:{phone:phone},
             type:'get',
             datatype:'json',
-            // success:function($error)
-            // {
-            //     console.log(json_decode($error));
-            // }
         });
         var i = 60;
         $(".acq_check").val(i + "秒后可重发");
@@ -23,10 +24,9 @@ window.onload = function() {
             } else {
                 clearInterval(timer);
                 timer = null;
-                $(".acq_check").val("获取验证码");
+                $(".acq_check").val("重新发送");
                 $(".acq_check").removeAttr("disabled");
             }
         }, 1000);
     });
-
 }

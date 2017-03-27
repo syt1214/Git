@@ -10,13 +10,13 @@ class GetHeadController extends Controller
 {
     public function GetHead(Request $request)
     {
-        $uid=$request->input('uid');
+        $user_id=$request->input('user_id');
         $head=$_FILES['img'];
         $result=DB::table('headpics')->insert([
-            'uid'=>$uid,
+            'user_id'=>$user_id,
             'head'=>$head,
         ]);
-        dd($result);
+//        dd($result);
         return view('home.personal');
     }
 }

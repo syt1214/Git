@@ -4,9 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <meta property="wb:webmaster" content="973d669418f79e8b" />
     <title>堆糖生活家</title>
-    <meta name="description" content="ddd" />
     <link href="http://www.duitang.com/favicon.ico" rel="SHORTCUT ICON" />
     <link rel="stylesheet" type="text/css" href="{{url('css/lib.8551015b.css')}}">
     <link rel="stylesheet" href="{{url('css/guide.5f5b49b9.css')}}">
@@ -14,12 +12,12 @@
 </head>
 <body>
 <div id="content">
-    <div id="dowebok" style="position: relative;z-index: 99;">
+    <div id="dowebok" style="position: relative;z-index: 99999;">
         <div class="section section1" style="position: relative;">
             <img class="pg-next-page" src="{{url('images/20160819111217_jcekk.png')}}" />
             <div id="dt-header" style="position: absolute;top: 0;width: 100%;">
                 <div class="dt-wrap clr">
-                    <a id="dt-logo" href="/">堆糖</a>
+                    <a id="dt-logo" href="{{url('home/homepage')}}">堆糖</a>
                     <div id="dt-header-right">
                         <a  class="dt-head-cat" href="{{url('home/login')}}">登录</a>
                         <div class="dt-vline"></div>

@@ -23,33 +23,33 @@
             <div class="pg-wrapbox">
                 <div class="pg-box clr">
                     <div class="l">
-                        <form class="form pg-form-login clr" action="{{url('user/reg')}}"method="post"onsubmit="return checkForm()"name="myform">
+                        <form class="form pg-form-login clr" action="{{url('user/reg')}}"method="post" name="myform" id="reg-form" >
                             {{csrf_field()}}
                             <ul class="pg-infobox l">
                                 <li>
-                                    <p><input placeholder="用户名" type="text" name="username"onblur="checkUser()"><span id="uspan"></span></p>
+                                    <p><input placeholder="用户名" type="text" name="username" id="username"><span id="uspan"></span></p>
                                     <br>
                                     {{--<span class="reg-tips"></span>--}}
 
                                 </li>
                                 <li>
-                                   <p><input placeholder="密码" type="password" name="password" onblur="checkPass()"/><span id="passspan"></span></p>
+                                   <p><input placeholder="密码" type="password" name="password" id='password' /><span id="passspan"></span></p>
                                    <br>
                                     {{--<span class="reg-tips"></span>--}}
 
                                 </li>
                                 <li>
-                                    <p><input placeholder="邮箱" type="email" name="email"onblur="checkEmail()"/><span id="espan"></span></p>
+                                    <p><input placeholder="邮箱" type="email" name="email" id='email' /><span id="espan"></span></p>
                                     <br>
                                     {{--<span class="reg-tips"></span>--}}
 
                                 </li>
                                 <li>
-                                    <p><input class="phone_re" id="phone"type="text" name="phone" placeholder="手机号" onblur="checkPhone()"><span id="pspan"></span></p>
+                                    <p><input class="phone_re" id="phone"type="text" name="phone" id="phone" placeholder="手机号" ><span id="pspan"></span></p>
                                     <br>
                                 </li>
                                 <li>
-                                    <input style="width:130px;" class="check_re" type="text" name="checkcode" placeholder="验证码">
+                                    <input style="width:130px;" class="check_re" type="text" name="checkcode" id="checkcode" placeholder="验证码">
                                     <input class="acq_check" style="width:80px;height:35px;padding-left:20px;cursor:pointer;"value="获取验证码">
                                 </li>
                                 <li>
@@ -89,9 +89,49 @@
         </div>
     </div>
 </div>
-{{--<div id="win-house" class="h0">--}}
-    {{--<h1 class="loginerror"></h1>--}}
-{{--</div>--}}
-{{--<div id="foot-forms" class="dn">--}}
-{{--</div>--}}
+<script>
+    $("#reg-form").submit(function () {
+        var data= $(this).serialize();
+        console.log(data);
+//        var flag=true;
+        $.ajax({
+            url: '{{url('user/reg')}}',
+            data: data,
+            type: 'post',
+            datatype: 'json',
+            success: function (data) {
+//                 alert(11111111);
+//                if (data == null) {
+//                    alert('服务器繁忙');
+//                    return;
+//                }
+                if (data.status == 1) {
+                    alert(data.message);
+                    return;
+                }
+                if (data.status == 2) {
+                    alert(data.message);
+                    return;
+                }
+                if (data.status == 3) {
+                    alert(data.message);
+                    return;
+                }
+                if (data.status == 4) {
+                    alert(data.message);
+                    return;
+                }
+                    location.href = "{{url('home/register')}}";
+            },
+            error:function (xhr, status, error) {
+//                 alert(111);
+                console.log(error);
+                console.log(xhr);
+                console.log(status);
+            }
+        })
+        return false;
+    });
+
+</script>
 @endsection

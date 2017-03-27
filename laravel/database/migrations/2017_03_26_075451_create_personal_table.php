@@ -15,7 +15,7 @@ class CreatePersonalTable extends Migration
     {
         Schema::create('personals', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('uid');
+            $table->integer('user_id');
             $table->string('username');
             $table->string('description');
             $table->tinyInteger('sex');
