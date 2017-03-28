@@ -50,14 +50,14 @@
             <div class="block">
                 <div class="ps-info-img">
                     <div class="ps-img-d">
-                        <a id="myphotoa" href="javascript:;"><img id="defaulthead" height="120" width="120" src=""></a>
+                        <a id="myphotoa" href="javascript:;"><img id="defaulthead" height="120" width="120" src="{{asset('public/').'/'.$head}}"></a>
                     </div>
                 </div>
                 <div id="set-uploadhead-holder" class="set-selectpic gray">
                     <div id="default-dec" class="l20">在堆糖大家都是“有头有脸”的朋友，上传头像让大家更快认识您。
                         <br /> 选择喜欢的图片作为您的头像：</div>
                     <div id="view-dec" class="l20 dn">这是您新头像的预览，满意地话就点击保存吧：
-                        <br />&nbsp;</div>
+                        <br />&nbsp;</div>/
                     <div class="pgareaup">
                         {{--<a class="abtn abtn-up dib" href="javascript:;" id="set-uploadhead-btn"><u><i></i>上传头像</u>--}}
                             <form id="form-headimg" method="post" action="{{url('user/head')}}" enctype="multipart/form-data">
@@ -98,9 +98,10 @@
                             <colgroup width="600"></colgroup>
                             <tr>
                                 <th>用户名</th>
-                                <td><span class="mynick"></span><span id="pg-mynick"></span>
+                                <td><span class="mynick">{{$username}}</span><span id="pg-mynick"></span>
                                     {{--<br /><a id="changePop" class="mr8 redlk lkl" target="_blank">修改昵称</a><span class="gray">(每个月只有一次修改机会哦~)</span>--}}</td>
                             </tr>
+                            <input type="hidden" name="user_id" value="{{$user_id}}"/>
                             <tr>
                                 <th>性别</th>
                                 <td>

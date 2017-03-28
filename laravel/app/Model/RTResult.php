@@ -5,6 +5,7 @@ class RTResult
     //定义属性
     public $status;
     public $message;
+    public $session;
 
     public function toJson()
     {

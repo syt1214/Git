@@ -27,7 +27,7 @@
 </div>
 <div class="blockUI blockMsg blockPage" style="z-index: 9011; position: fixed; padding: 0px; margin: -273px 0px 0px -330px; width: 660px; top: 50%; left: 50%; text-align: left; color: rgb(0, 0, 0); border: none; height: 506px; background: none;opacity:1">
     <div class="mask-body" style="width: 660px;">
-        <div class="tt-s"><span>登录</span><a class="mask-close" target="_self" href="{{url('home/register')}}" onclick="SUGAR.PopOut.closeMask();">关闭</a></div>
+        <div class="tt-s"><span>登录</span><a class="mask-close" target="_self" href="{{url('home/register')}}" >关闭</a></div>
         <div class="mask-cont">
             <div id="poplogin" class="win-wraper clr">
                 <div class="login clr">
@@ -61,7 +61,7 @@
                             <a class="qqsite" href="" >
                                 <i class="pg-QQ"></i></a><a class="weibo" href="" ><i class="pg-weibo"></i></a>
                             <a class="douban" href="" >
-                                <i class="pg-douban"></i></a><a class="taobao" href="" ><i class="pg-taobao"></i></a><a class="qweibo" href="" onmousedown="$.G.gaq('/_trc/Login/pop/connect_qweibo');"><i class="pg-qqweibo"></i></a></div>
+                                <i class="pg-douban"></i></a><a class="taobao" href="" ><i class="pg-taobao"></i></a><a class="qweibo" href="" ><i class="pg-qqweibo"></i></a></div>
                     </div>
                     <div class="sites">
                         <div class="clr" style="height:314px;width:200px;padding:0 0 14px;">
@@ -82,39 +82,41 @@
         $("#code").attr('src',"{{captcha_src()}}"+Math.random());
     });
 
-    //用户登录
-    $("#dt-form-login").submit(function () {
-        //数据验证
-        //获取数据
-        var data= $(this).serialize();
-        console.log(data);
-        $.ajax({
-            type:'post',
-            dataType:'json',
-            data:data,
-            url:'{{url('user/login')}}',
-            success:function (data) {
-                if (data.status == 1) {
-                    alert(data.message);
-                    return
-                }
-                if (data.status == 2) {
-                    alert(data.message);
-                    return
-                }
-                if (data.status == 3) {
-                    alert(data.message);
-                    return
-                }
-                if (data.status == 4) {
-                    alert(data.message);
-                    return
-                }
-
-                location.href = "{{url('home/login')}}";
-            }
-        })
-        return false;
-    });
+    {{--//用户登录--}}
+    {{--$("#dt-form-login").submit(function () {--}}
+        {{--//数据验证--}}
+        {{--//获取数据--}}
+        {{--var data= $(this).serialize();--}}
+        {{--console.log(data);--}}
+        {{--$.ajax({--}}
+            {{--type:'post',--}}
+            {{--dataType:'json',--}}
+            {{--data:data,--}}
+            {{--url:'{{url('user/login')}}',--}}
+            {{--success:function (data) {--}}
+              {{--console.log(data);--}}
+                {{--if(data=='')--}}
+                {{--{--}}
+                    {{--alert('服务器请求错误');--}}
+                    {{--return--}}
+                {{--}--}}
+                {{--if (data.status !=0) {--}}
+                    {{--alert(data.message);--}}
+                    {{--return;--}}
+                {{--}--}}
+                {{--$user_id=data.session;--}}
+{{--//                alert($user_id);--}}
+{{--//                $advert='?user_id='+$user_id;--}}
+                {{--location.href = "{{url('home/personal')}}";--}}
+            {{--},--}}
+            {{--error:function (xhr, status, error) {--}}
+{{--//                 alert(111);--}}
+                {{--console.log(error);--}}
+                {{--console.log(xhr);--}}
+                {{--console.log(status);--}}
+            {{--}--}}
+        {{--})--}}
+        {{--return false;--}}
+    {{--});--}}
 </script>
 @endsection

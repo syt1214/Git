@@ -1,10 +1,11 @@
 @extends('home/master')
 @section('title','注册')
 @section('style')
-    <script src="{{url('js/register.js')}}"></script>
-    <script src="{{url('js/code.js')}}"></script>
+    <script src="{{asset('js/register.js')}}"></script>
+    <script src="{{asset('js/code.js')}}"></script>
 @endsection
 @section('content')
+
 <div id="content">
     <div class="pg-main">
         <div class="pg-header">
@@ -23,7 +24,7 @@
             <div class="pg-wrapbox">
                 <div class="pg-box clr">
                     <div class="l">
-                        <form class="form pg-form-login clr" action="{{url('user/reg')}}"method="post" name="myform" id="reg-form" >
+                        <form class="form pg-form-login clr" action="{{url('user/reg')}}" method="post" name="myform" id="reg-form" >
                             {{csrf_field()}}
                             <ul class="pg-infobox l">
                                 <li>
@@ -89,40 +90,24 @@
         </div>
     </div>
 </div>
+
 <script>
     $("#reg-form").submit(function () {
         var data= $(this).serialize();
-        console.log(data);
-//        var flag=true;
         $.ajax({
             url: '{{url('user/reg')}}',
             data: data,
             type: 'post',
-            datatype: 'json',
+            dataType:'json',
             success: function (data) {
-//                 alert(11111111);
-//                if (data == null) {
-//                    alert('服务器繁忙');
-//                    return;
-//                }
-                if (data.status == 1) {
-                    alert(data.message);
-                    return;
-                }
-                if (data.status == 2) {
-                    alert(data.message);
-                    return;
-                }
-                if (data.status == 3) {
-                    alert(data.message);
-                    return;
-                }
-                if (data.status == 4) {
-                    alert(data.message);
-                    return;
-                }
-                    location.href = "{{url('home/register')}}";
+               if(data.status!=0)
+               {
+                   alert(data.message);
+                   return;
+               }
+                location.href = "{{url('home/login')}}";
             },
+
             error:function (xhr, status, error) {
 //                 alert(111);
                 console.log(error);
@@ -133,5 +118,6 @@
         return false;
     });
 
-</script>
+//</script>
 @endsection
+

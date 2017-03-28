@@ -24,41 +24,46 @@ class UserRegController extends Controller
         $recode = DB::table('temp_codes')->where('phone', $reg_phone)->get();
         $deadtime = DB::table('temp_codes')->where('phone', $reg_phone)->get();
         $rt_result = new RTResult;
-        if($reg_name=='') {
-            $rt_result->status = 1;
-            $rt_result->message = '亲，用户名不能为空哦';
-            return $rt_result->toJson();
-        }
-        if($reg_pass=='') {
-            $rt_result->status = 2;
-            $rt_result->message = '亲，密码不能为空哦';
-            return $rt_result->toJson();
-        }
+//        if($reg_name=='') {
+//            $rt_result->status= 1;
+//            $rt_result->message = '亲，用户名不能为空哦';
+//            return $rt_result->toJson();
+//        }
+//        if($reg_pass=='') {
+//            $rt_result->status= 2;
+//            $rt_result->message = '亲，密码不能为空哦';
+//            return $rt_result->toJson();
+//        }
         if($code=='') {
-            $rt_result->status = 3;
-            $rt_result->message = '亲，验证码不能为空哦';
+            $rt_result->status= 1;
+            $rt_result->message= '亲，验证码不能为空哦';
             return $rt_result->toJson();
         }
         if($code!=$recode) {
-            $rt_result->status = 4;
-            $rt_result->message = '验证码错误哦，请重新输入吧！';
+            $rt_result->status= 2;
+            $rt_result->message= '验证码错误哦，请重新输入吧！';
             return $rt_result->toJson();
         }
-//        die;
-        $result = DB::table('users')->insert([
-            'username' => $reg_name,
-            'password' =>$reg_pass,
-            'phone' => $reg_phone,
-            'email' => $reg_email,
-            'regtime' => $time,
-        ]);
-        dd($result);
-        return view('home/login');
+            $result = DB::table('users')->insert([
+                'username' => $reg_name,
+                'password' => $reg_pass,
+                'phone' => $reg_phone,
+                'email' => $reg_email,
+                'regtime' => $time,
+            ]);
+        if($result == true) {
+            $rt_result->status = 0;
+            $rt_result->message = '注册成功';
+            return $rt_result->toJson();
+        }
+//        dd($result);
+//        return redirect('home/login');
     }
 
     public function GetCode()
     {
         $phone=$_GET['phone'];
+//        dd($phone);
         $time=time();
         //验证码失效的时间
         $deadtime=$time+5*60;
@@ -71,6 +76,7 @@ class UserRegController extends Controller
         //调用发送短信方法
         $sendTemplateSMS=new send();
         $sendTemplateSMS->sendTemplateSMS($phone, array($code, 5), "1");
+//        dd($sendTemplateSMS);die;
         $result=DB::table('temp_codes')->insert([
             'phone'=>$phone,
             'code'=>$code,

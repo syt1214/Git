@@ -120,7 +120,6 @@
                     <div id="dt-header-right">
                         <div id="dt-account" class="dt-has-menu dt-head-cat">
                             <a class="dt-account-btn" href="https://www.duitang.com/people/?user_id=14346481">
-                                <img class="dt-avatar" src="./堆糖，美好生活研究所_files/20170326144124_XPaJ5.thumb.48_48_c.jpeg">
                                 <span>我的堆糖</span> <i></i>
                             </a>
                             <div class="dt-menu">

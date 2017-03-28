@@ -22,7 +22,7 @@ Route::get('home/login', function () {
 Route::get('home/homepage', function () {
     return view('home.homepage');
 });
-Route::get('home/personal', function () {
+Route::any('home/personal', function () {
     return view('home.personal');
 });
 Route::post('user/reg','Home\UserRegController@Check');
@@ -35,6 +35,6 @@ Route::any('user/setpass','Home\SetPassController@SetPass');
 
 
 
-Auth::routes();
+//Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+//Route::get('/home', 'HomeController@index');

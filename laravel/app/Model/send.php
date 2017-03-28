@@ -4,7 +4,7 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Model\REST;
-use App\Model\RTResult;
+//use App\Model\RTResult;
 class send extends Model
 {
 //主帐号
@@ -39,20 +39,38 @@ class send extends Model
         $rest->setAccount($this->accountSid, $this->accountToken);
         $rest->setAppId($this->appId);
 
+//        // 发送模板短信
+//        $result = $rest->sendTemplateSMS($to, $datas, $tempId);
+//        if($result == NULL ) {
+//            $rt_result->status = 1;
+//            $rt_result->message =  "result error!";
+//        }
+//        if($result->statusCode!=0) {
+//            $rt_result->status = $result->statusCode . "<br>";
+//            $rt_result->message = $result->statusMsg . "<br>";
+//        } else {
+//            $rt_result->status = 0;
+//            $rt_result->message =  '发送成功';
+//        }
+//        return $rt_result;
+//        return $rec;
         // 发送模板短信
         $result = $rest->sendTemplateSMS($to, $datas, $tempId);
-        if($result == NULL ) {
-            $rt_result->status = 1;
-            $rt_result->message =  "result error!";
+        if ($result == NULL) {
+            $rec['status'] = 2;
+            $rec['mess'] = "result error!";
         }
         if($result->statusCode!=0) {
-            $rt_result->status = $result->statusCode . "<br>";
-            $rt_result->message = $result->statusMsg . "<br>";
-        } else {
-            $rt_result->status = 0;
-            $rt_result->message =  '发送成功';
+            $rec['status'] =  $result->statusCode . "<br>";
+            $rec['mess'] =  $result->statusMsg . "<br>";
+            //TODO 添加错误处理逻辑
+        }else{
+            // 获取返回信息
+            $smsmessage = $result->TemplateSMS;
+            echo "dateCreated:".$smsmessage->dateCreated."<br/>";
+            echo "smsMessageSid:".$smsmessage->smsMessageSid."<br/>";
+//            return $result;
+            //TODO 添加成功处理逻辑
         }
-        return $rt_result;
-//        return $rec;
     }
 }
