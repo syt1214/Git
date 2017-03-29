@@ -107,7 +107,7 @@
                         <div class="dt-vline"></div>
                         <a class="dt-head-cat" href="{{url('home/login')}}">登录</a>
                         <div class="dt-vline"></div>
-                        <a class="dt-btn dt-head-cat" href="{{url('home/register')}}">注册</a>
+                        <a class="dt-btn dt-head-cat" href="{{url('user/goRegister')}}">注册</a>
                         <div class="dt-vline"></div>
                         <div class="dt-has-menu dt-head-cat">
                             <a class="dt-dreamer-a" href="">堆糖生活家</a>
@@ -124,18 +124,14 @@
                             </a>
                             <div class="dt-menu">
                                 <div class="dt-menu-inner dt-menu-mini">
-                                    <a id="mynavtools-home" href="">
+                                    <a id="mynavtools-home" href="{{url('user/special')}}">
                                         <i></i> 个人主页
                                     </a>
-                                    <!--a id="mynavtools-find" href="/comein/">
-    <i></i>
-    寻找好友
-    </a-->
-                                    <a id="mynavtools-setting" href="">
+                                    <a id="mynavtools-setting" href="{{url('user/gopersonal')}}">
                                         <i></i> 账号设置
                                     </a>
                                     <div class="dt-menu-bottom">
-                                        <a id="mynavtools-logout" href="">
+                                        <a id="mynavtools-logout" href="{{url('user/logout')}}">
                                             <i></i> 退出
                                         </a>
                                     </div>

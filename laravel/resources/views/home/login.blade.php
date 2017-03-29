@@ -27,7 +27,7 @@
 </div>
 <div class="blockUI blockMsg blockPage" style="z-index: 9011; position: fixed; padding: 0px; margin: -273px 0px 0px -330px; width: 660px; top: 50%; left: 50%; text-align: left; color: rgb(0, 0, 0); border: none; height: 506px; background: none;opacity:1">
     <div class="mask-body" style="width: 660px;">
-        <div class="tt-s"><span>登录</span><a class="mask-close" target="_self" href="{{url('home/register')}}" >关闭</a></div>
+        <div class="tt-s"><span>登录</span><a class="mask-close" target="_self" href="{{url('user/goregister')}}" >关闭</a></div>
         <div class="mask-cont">
             <div id="poplogin" class="win-wraper clr">
                 <div class="login clr">
@@ -52,7 +52,7 @@
                                 <input class="chk" type="checkbox" name="remember" id="poplogin-rem" value="" checked="">
                                 <label for="poplogin-rem">记住我</label><a href="" style="position: relative;left: 100px;">忘记密码？</a></div>
                             <div class="submit clr">
-                                <a class="abtn l" href="{{url('home/register')}}" id="loginbtn">
+                                <a class="abtn l" href="{{url('user/gologin')}}" id="loginbtn">
                                     <button type="submit" class="pg-loginbtn"><u>登录</u></button>
                                 </a>
                             </div>

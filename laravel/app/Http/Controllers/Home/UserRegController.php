@@ -12,6 +12,10 @@ use App\Model\send;
 use App\Model\RTResult;
 class UserRegController extends Controller
 {
+    public function GoRegister()
+    {
+        return view('home.register');
+    }
     public function Check(Request $request)
     {
         //验证用户注册的表单内容
@@ -21,19 +25,12 @@ class UserRegController extends Controller
         $reg_email = $request->input('email');
         $time = time();
         $code = $request->input('checkcode');
-        $recode = DB::table('temp_codes')->where('phone', $reg_phone)->get();
-        $deadtime = DB::table('temp_codes')->where('phone', $reg_phone)->get();
+        $deadtime = DB::table('temp_codes')->where('phone', $reg_phone)->max('deadtime');
+//        dd($deadtime);
+        $recode = DB::table('temp_codes')->where('deadtime', $deadtime)->select('code')->get();
+        $recode=$recode[0]->code;
+//        dd($recode);
         $rt_result = new RTResult;
-//        if($reg_name=='') {
-//            $rt_result->status= 1;
-//            $rt_result->message = '亲，用户名不能为空哦';
-//            return $rt_result->toJson();
-//        }
-//        if($reg_pass=='') {
-//            $rt_result->status= 2;
-//            $rt_result->message = '亲，密码不能为空哦';
-//            return $rt_result->toJson();
-//        }
         if($code=='') {
             $rt_result->status= 1;
             $rt_result->message= '亲，验证码不能为空哦';
@@ -82,6 +79,6 @@ class UserRegController extends Controller
             'code'=>$code,
             'deadtime'=>$deadtime,
         ]);
-        dd($result);
+//        dd($result);
     }
 }

@@ -19,9 +19,9 @@
                 <div class="dt-wrap clr">
                     <a id="dt-logo" href="{{url('home/homepage')}}">堆糖</a>
                     <div id="dt-header-right">
-                        <a  class="dt-head-cat" href="{{url('home/login')}}">登录</a>
+                        <a  class="dt-head-cat" href="{{url('user/gologin')}}">登录</a>
                         <div class="dt-vline"></div>
-                        <a id="dt-register" class="dt-btn dt-head-cat" href="{{url('home/register')}}">注册</a>
+                        <a id="dt-register" class="dt-btn dt-head-cat" href="{{url('user/goregister')}}">注册</a>
                     </div>
                 </div>
             </div>

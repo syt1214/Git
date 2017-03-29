@@ -50,7 +50,7 @@
             <div class="block">
                 <div class="ps-info-img">
                     <div class="ps-img-d">
-                        <a id="myphotoa" href="javascript:;"><img id="defaulthead" height="120" width="120" src="{{asset('public/').'/'.$head}}"></a>
+                        <a id="myphotoa" href="javascript:;"><img id="defaulthead" height="120" width="120" src="{{asset('public/').'/'.Session()->get('head')}}"></a>
                     </div>
                 </div>
                 <div id="set-uploadhead-holder" class="set-selectpic gray">
@@ -63,7 +63,7 @@
                             <form id="form-headimg" method="post" action="{{url('user/head')}}" enctype="multipart/form-data">
                                 {{csrf_field()}}
                                 {{--<input type="file" hidefocus="true" name="img">--}}
-                                <input type="hidden" name="user_id" value="{{$user_id}}"/>
+                                <input type="hidden" name="user_id" value="{{Session()->get('user_id')}}"/>
                                 {{--<iframe name="alupifr" src="about:blank" class="dn" scrolling="no" frameborder="0" height="0" width="0">--}}
                                 {{--</iframe><input type="hidden" name="type" value="avatar"/>--}}
                                 <span class="button">
@@ -98,10 +98,10 @@
                             <colgroup width="600"></colgroup>
                             <tr>
                                 <th>用户名</th>
-                                <td><span class="mynick">{{$username}}</span><span id="pg-mynick"></span>
+                                <td><span class="mynick">{{Session()->get('username')}}</span><span id="pg-mynick"></span>
                                     {{--<br /><a id="changePop" class="mr8 redlk lkl" target="_blank">修改昵称</a><span class="gray">(每个月只有一次修改机会哦~)</span>--}}</td>
                             </tr>
-                            <input type="hidden" name="user_id" value="{{$user_id}}"/>
+                            <input type="hidden" name="user_id" value="{{Session()->get('user_id')}}"/>
                             <tr>
                                 <th>性别</th>
                                 <td>
@@ -145,14 +145,15 @@
             </div>
         </div>
         <!-- edit_passwd -->
-        <form action="{{url('user/setpass')}}" method="post" name="myform">
+        <form action="{{url('user/setpass')}}" method="post" name="myform" id="myform">
             {{csrf_field()}}
         <div class="hset set-pwd set-password" id="set-password"style="display:none;">
                 <table class="tableform" cellspacing="5" cellpadding="5">
                         <tr>
                            <th>当前密码</th>
                             <td>
-                                <input type="password" class="ipt" name="oldpass"/>
+                                <input type="password" class="ipt" name="oldpass" id="oldpass"/>
+                                <span>{{$errors->first('oldpass')}}</span>
                             </td>
                             <td>&nbsp;</td>
                         </tr>
@@ -160,20 +161,22 @@
                             <th>新密码</th>
                             <td>
                                 <input class="ipt" type="password" name="newpass" id="newpass" /> 密码至少是8位字母加数字</td>
+                                <span>{{$errors->first('newpass')}}</span>
                             <td>&nbsp;</td>
                         </tr>
                         <tr>
                             <th>确认新密码</th>
                             <td>
                                 <input class="ipt" type="password" name="renewpass" id="renewpass" />
+                                <span id="respan"></span>
                             </td>
                             <td class="pswerror" style="color:red">&nbsp;</td>
                         </tr>
                     <tr>
                         <th>验证码</th>
-                        <td>
-                            <input class="ipt" type="text" placeholder="验证码" name="code" style="position: relative;top:-15px;">
-                            <img src="{{captcha_src()}}" alt=""id="code">
+                        <td class="checkcode">
+                            <input class="ipt" type="text"name="code" style="position: relative;top:-15px;">
+                            <img src="{{captcha_src()}}" alt=""id="code"  style="cursor:pointer;">
                             <span>{{$errors->first('code')}}</span>
                         </td>
                     </tr>
@@ -192,16 +195,6 @@
         </div>
     </div>
 </div>
-<script>
-    var repass=document.getElementById('renewpass');
-    repass.onblur=function() {
-        var newpass=document.getElementById('newpass').value;
-        var renewpass=document.getElementById('renewpass').value;
-        if (newpass != renewpass) {
-            alert('亲，你输入的两次密码不一致哦，请重新输入吧');
-        }
-    }
-</script>
 <div id="footer" class="footer">
     <div class="realfoot footcont">
         <div class="footct graylk">
@@ -254,6 +247,17 @@
 </div>
 <div id="foot-forms" class="dn">
 </div>
+<script>
+    var repass=document.getElementById('renewpass');
+    repass.onblur=function() {
+        var newpass=document.getElementById('newpass').value;
+        var renewpass=document.getElementById('renewpass').value;
+        console.log(newpass);
+        if (newpass != renewpass) {
+            document.getElementById('respan').innerHTML="<a style='color:red;'>两次密码不匹配哦，请重新输入</a>"
+        }
+    }
+</script>
 <script type="text/javascript">
     var info=document.getElementById('info');
     var updatepass=document.getElementById('updatepass');
@@ -276,5 +280,10 @@
         div1.style.display='none';
         div2.style.display='block';
     }
+</script>
+<script>
+    $(".checkcode img").click(function () {
+        $("#code").attr('src',"{{captcha_src()}}"+Math.random());
+    });
 </script>
 @endsection

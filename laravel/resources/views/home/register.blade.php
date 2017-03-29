@@ -14,9 +14,9 @@
                     <img class="pg-logo" src="{{url('images/20150109151228_wzrfg.png')}}" alt="logo" />
                 </a>
                 <div class="pg-logbtns">
-                    <a class="pg-reg active" href="{{url('home/register')}}">注册</a>
+                    <a class="pg-reg active" href="{{url('user/goregister')}}">注册</a>
                     <span>|</span>
-                    <a class="pg-log" href="{{url('home/login')}}">登录</a>
+                    <a class="pg-log" href="{{url('user/gologin')}}">登录</a>
                 </div>
             </div>
         </div>
@@ -105,7 +105,7 @@
                    alert(data.message);
                    return;
                }
-                location.href = "{{url('home/login')}}";
+                location.href = "{{url('user/gologin')}}";
             },
 
             error:function (xhr, status, error) {

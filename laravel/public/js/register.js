@@ -1,5 +1,5 @@
 
-//验证用户名ss
+//验证用户名
 $(function () {
     $("#username").blur(function () {
         // alert($);

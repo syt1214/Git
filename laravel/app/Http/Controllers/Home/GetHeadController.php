@@ -19,6 +19,6 @@ class GetHeadController extends Controller
             'head'=>$head,
         ]);
 //        dd($result);
-        return view('home/personal')->with(['head'=>$head,'user_id'=>$user_id]);
+        return redirect('user/gopersonal')->with(['head'=>$head,'user_id'=>$user_id]);
     }
 }
