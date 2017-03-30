@@ -118,7 +118,7 @@
                              <div class="woo co1" data-id="83320245" data-idx="1" style="top:0px;left:244px;">
                                  <div class="dt-xitem-img">
                                    {{--<img alt="生活" src="{{asset('public/').'/'.$all['pic']}}">--}}
-                                 <a href="" class="dt-xitem-icv" target="_blank">
+                                 <a href="{{url('user/godetailspecial',['id'=>$all['id']])}}" class="dt-xitem-icv" target="_blank">
                                     <img alt="生活" src="{{asset('public/').'/'.$all['pic']}}">
 {{--                                     <p>{{$all['desc']}}</p>--}}
                                  </a>
@@ -269,7 +269,7 @@
             $('.add').click(function (e) {
                 $(this).css({'color':'#FF4466','border-color':'#FF4466'});
                 content='';
-                content+=$(this).html();
+                content=$('#tag').val()+$(this).html()+';';
                 $('#tag').val(content);
             })
     </script>

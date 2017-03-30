@@ -7,18 +7,22 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Mews\Captcha\Facades\Captcha;
 use Illuminate\Support\Facades\Validator;
+use App\Model\RTResult;
 class PersonInfoController extends Controller
 {
     //跳转到个人信息页面
     public function GoPersonal()
     {
-        return view('home.personal');
+        $personal=DB::table('personals')->join('headpics',function($join){
+           $join->on('personals.user_id','headpics.user_id')->where('personals.user_id',Session()->get('user_id'));
+        })->get();
+        $personal=$personal[0];
+        return view('home.personal')->with(['personal'=>$personal]);
     }
     //获得头像的控制器
     public function GetHead(Request $request)
     {
         $user_id=Session()->get('user_id');
-        $user_id=$user_id[0]->id;
         //为图片命名
         $picname = time() . '.jpg';
         //保存图片
@@ -30,9 +34,7 @@ class PersonInfoController extends Controller
             ->update([
                 'head' => $head,
             ]);
-        $request->session()->put('head',$head);
-//        dd($result);
-        return view('home.personal')->with(['head'=>$head,'user_id'=>$user_id,'username'=>$username]);
+        return redirect('user/gopersonal');
     }
 
     //填写个人信息的控制器
@@ -40,15 +42,14 @@ class PersonInfoController extends Controller
     {
 
         $phone=$request->session()->get('phone');
-        $user_id=Session()->get('user_id')->first()->id;
-//        dd($user_id);
+        $user_id=Session()->get('user_id');
         $persons=DB::table('personals')->where('user_id',$user_id)->get()->first();
-//        dd($persons);
        $username=DB::table('users')->where('id',$user_id)->select('username')->get();
        $username=$username[0]->username;
        $sex=$request->input('sex');
        $description=$request->input('description');
 //       dd($persons);
+        //如果原先数据结果为空就插入到数据库，否则更新
         if($persons=='')
         {
             $result=DB::table('personals')->insert([
@@ -70,8 +71,8 @@ class PersonInfoController extends Controller
     //修改个人密码的控制器
     public function SetPass(Request $request)
     {
+        $rt_result = new RTResult;
         $user_id=Session()->get('user_id');
-        $user_id=$user_id[0]->id;
         $username=DB::table('users')->where('id',$user_id)->select('username')->get();
         $username=$username[0]->username;
         $head=DB::table('headpics')->where('user_id',$user_id)->select('head')->get();
@@ -79,24 +80,51 @@ class PersonInfoController extends Controller
         $oldpass=$request->input('oldpass');
         $newpass=$request->input('newpass');
         $renewpass=$request->input('renewpass');
-//       dd($result);
+        $code=$request->input('code');
+        if($oldpass=='')
+        {
+            $rt_result->status= 1;
+            $rt_result->message= '亲，旧密码不能为空哦';
+            return $rt_result->toJson();
+        }
+        if($newpass=='')
+        {
+            $rt_result->status= 2;
+            $rt_result->message= '亲，新密码不能为空哦';
+            return $rt_result->toJson();
+        }
+        if($renewpass=='')
+        {
+            $rt_result->status= 3;
+            $rt_result->message= '亲，确认密码不能为空哦';
+            return $rt_result->toJson();
+        }
+        if($code=='')
+        {
+            $rt_result->status= 4;
+            $rt_result->message= '亲，验证码不能为空哦';
+            return $rt_result->toJson();
+        }
         $rules = [
-            'oldpass'=>'required',
-            "newpass" => 'required',
-            "code" => 'required | captcha',
+            "code" => 'captcha',
         ];
         $messages = [
-            'oldpass.required'=>'亲，原密码不能为空哦',
-            'renewpass.required'=>'亲，确认密码不能为空哦',
-            'code.required' => '请输入验证码',
             'code.captcha' => '验证码错误，请重试'
         ];
         $validator = Validator::make($request->all(), $rules, $messages);
         if($validator->fails()) {
-            return view('home.personal')->withErrors($validator)->with(['user_id'=>$user_id,'head'=>$head,'username'=>$username]);;
+            $rt_result->status= 5;
+            $rt_result->message= '亲，验证码输入错误哦';
+            return $rt_result->toJson();
+//            return redirect('user/gopersonal')->withErrors($validator);
         }
         $result=DB::table('users')->where('id',$user_id)->update(['password'=>$newpass]);
-//        dd($result);
-        return view('home.homepage');
+        if($result==true)
+        {
+            $rt_result->status= 0;
+            $rt_result->message= '亲，你已经成功修改了密码哦';
+            return $rt_result->toJson();
+        }
+//        return view('home.homepage');
     }
 }

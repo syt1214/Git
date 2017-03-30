@@ -37,17 +37,17 @@
                             <div class="dt-unme cnt-i clr">
                                 <input type="text" name="login_phone" placeholder="手机号">
                             </div>
-                            <span>{{$errors->first('login_phone')}}</span>
+{{--                            <span>{{$errors->first('login_phone')}}</span>--}}
                             <div class="dt-pswd cnt-i clr">
                                 <input type="password" id="p-password" name="login_pass" placeholder="密码">
                             </div>
-                            <span>{{$errors->first('login_pass')}}</span>
+{{--                            <span>{{$errors->first('login_pass')}}</span>--}}
 
                             <div class="checkcode" style="margin-bottom:20px;">
                                 <input type="text" placeholder="验证码" name="code"style="width:120px;height:35px;position:relative;top:20px;">
                                 <div style="float:right;"><img src="{{captcha_src()}}" alt=""style="margin-top:20px;margin-left:15px;cursor:pointer;" id="code"></div>
                             </div>
-                            <span>{{$errors->first('code')}}</span>
+{{--                            <span>{{$errors->first('code')}}</span>--}}
                             <div class="u-chk clr">
                                 <input class="chk" type="checkbox" name="remember" id="poplogin-rem" value="" checked="">
                                 <label for="poplogin-rem">记住我</label><a href="" style="position: relative;left: 100px;">忘记密码？</a></div>
@@ -82,41 +82,34 @@
         $("#code").attr('src',"{{captcha_src()}}"+Math.random());
     });
 
-    {{--//用户登录--}}
-    {{--$("#dt-form-login").submit(function () {--}}
-        {{--//数据验证--}}
-        {{--//获取数据--}}
-        {{--var data= $(this).serialize();--}}
-        {{--console.log(data);--}}
-        {{--$.ajax({--}}
-            {{--type:'post',--}}
-            {{--dataType:'json',--}}
-            {{--data:data,--}}
-            {{--url:'{{url('user/login')}}',--}}
-            {{--success:function (data) {--}}
-              {{--console.log(data);--}}
-                {{--if(data=='')--}}
-                {{--{--}}
-                    {{--alert('服务器请求错误');--}}
-                    {{--return--}}
-                {{--}--}}
-                {{--if (data.status !=0) {--}}
-                    {{--alert(data.message);--}}
-                    {{--return;--}}
-                {{--}--}}
-                {{--$user_id=data.session;--}}
-{{--//                alert($user_id);--}}
-{{--//                $advert='?user_id='+$user_id;--}}
-                {{--location.href = "{{url('home/personal')}}";--}}
-            {{--},--}}
-            {{--error:function (xhr, status, error) {--}}
-{{--//                 alert(111);--}}
-                {{--console.log(error);--}}
-                {{--console.log(xhr);--}}
-                {{--console.log(status);--}}
-            {{--}--}}
-        {{--})--}}
-        {{--return false;--}}
-    {{--});--}}
+    //用户登录
+    $("#dt-form-login").submit(function () {
+        //数据验证
+        //获取数据
+        var data= $(this).serialize();
+        console.log(data);
+        $.ajax({
+            url: '{{url('user/login')}}',
+            data: data,
+            type: 'post',
+            dataType:'json',
+            success: function (data) {
+                if(data.status!=0)
+                {
+                    alert(data.message);
+                    return;
+                }
+                location.href = "{{url('user/gopersonal')}}";
+            },
+
+            error:function (xhr, status, error) {
+//                 alert(111);
+                console.log(error);
+                console.log(xhr);
+                console.log(status);
+            }
+        })
+        return false;
+    });
 </script>
 @endsection
