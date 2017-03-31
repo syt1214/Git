@@ -1,4 +1,4 @@
-﻿@charset "UTF-8";
+@charset "UTF-8";
 .block:after,
 .stpics li:after {
     content: "\0020";
@@ -48,7 +48,7 @@ html {
 
 .woo-loading {
     height: 40px;
-    background: url(../images/20130730175612_ku2df_2.gif) center 12px no-repeat
+    background: url(http://img5.duitang.com/uploads/people/201307/30/20130730175612_KU2dF.gif) center 12px no-repeat
 }
 
 .woo-loading .woo {
@@ -280,14 +280,14 @@ div.stpics .mbpho img {
 .stpics .a u.bottomfade {
     padding-bottom: 1px;
     border-bottom-width: 0;
-    background-image: url(../images/20140607211809_mrv2b_2.png);
+    background-image: url(http://img5.duitang.com/uploads/people/201406/07/20140607211809_mrv2B.png);
     background-position: 0 bottom;
     background-repeat: repeat-x
 }
 
 div.stpics .mbpho .k {
     width: 208px;
-    background: url(../images/20120706224429_3jzgy_2.png) no-repeat
+    background: url(http://img5.duitang.com/uploads/people/201207/06/20120706224429_3JzGy.png) no-repeat
 }
 
 div.stpics .mbpho .k img {
@@ -325,7 +325,7 @@ div.stpics .mbpho .k img {
     line-height: 19px;
     padding: 0 0 0 16px;
     margin: 0 8px 0 0;
-    background-image: url(../images/20140528162525_djtau_2.png);
+    background-image: url(http://img5.duitang.com/uploads/people/201405/28/20140528162525_djtAu.png);
     background-repeat: no-repeat;
     font-size: 13px;
     color: #a0a0a0
@@ -434,7 +434,7 @@ div.stpics .mbpho .k img {
 
 .stpics .woo .d .by ._tb {
     padding-left: 16px;
-    background: url(../images/20140607202837_x2ylk_2.png) 3px -27px no-repeat
+    background: url(http://img5.duitang.com/uploads/people/201406/07/20140607202837_x2yLK.png) 3px -27px no-repeat
 }
 
 .collbtn,
@@ -467,14 +467,14 @@ div.stpics .mbpho .k img {
     padding: 8px;
     display: none;
     z-index: 500;
-    background-image: url(../images/20140528135812_wyjyt_2.png);
+    background-image: url(http://img5.duitang.com/uploads/people/201405/28/20140528135812_wYJyt.png);
     background-position: 0 -72px
 }
 
 .collbtn a.x i,
 .collbtn a.y i,
 .collbtn a.z i {
-    background-image: url(../images/20140528162525_djtau_2.png)
+    background-image: url(http://img5.duitang.com/uploads/people/201405/28/20140528162525_djtAu.png)
 }
 
 .collbtn a:hover,
@@ -707,7 +707,7 @@ div.stpics .mbpho .k img {
     height: 20px;
     padding: 0 0 0 22px;
     margin: 8px 0 0;
-    background-image: url(../images/20150710114801_vf2ec_2.png);
+    background-image: url(http://img5q.duitang.com/uploads/people/201507/10/20150710114801_vf2eC.png);
     background-repeat: no-repeat;
     background-position: 0 -649px
 }
@@ -717,7 +717,7 @@ div.stpics .mbpho .k img {
 #as-link:visited,
 #as-next,
 #as-pre {
-    background-image: url(../images/20150629171046_uvays.gif);
+    background-image: url(http://img5q.duitang.com/uploads/people/201506/29/20150629171046_UVAyS.gif);
     background-repeat: no-repeat
 }
 
@@ -994,7 +994,7 @@ div.stpics .mbpho .k img {
 .form-line {
     padding-top: 20px;
     padding-bottom: 20px;
-    background: url(../images/20131220173009_fh3ym_2.png) left bottom repeat-x
+    background: url(http://img5.duitang.com/uploads/people/201312/20/20131220173009_fH3Ym.png) left bottom repeat-x
 }
 
 .form-content,
@@ -1005,7 +1005,7 @@ div.stpics .mbpho .k img {
 #re-close:link,
 #re-close:visited,
 .re-mbsite {
-    background-image: url(../images/20150710114801_vf2ec_2.png)
+    background-image: url(http://img5q.duitang.com/uploads/people/201507/10/20150710114801_vf2eC.png)
 }
 
 .form-line:after,
@@ -1097,7 +1097,7 @@ div.stpics .mbpho .k img {
     margin-top: -1px;
     border-top: 1px solid #ebebeb;
     text-indent: -99999px;
-    background-image: url(../images/20150729111454_2mytp_2.png);
+    background-image: url(http://img4q.duitang.com/uploads/people/201507/29/20150729111454_2mytP.png);
     background-repeat: no-repeat;
     background-position: -1101px -241px
 }
@@ -1304,7 +1304,7 @@ a#re-albumtrig:visited {
     color: #666;
     border: 1px solid #bababa;
     background-color: #fff;
-    background-image: url(../images/20150629171618_ckeuh_2.gif);
+    background-image: url(http://img4q.duitang.com/uploads/people/201506/29/20150629171618_CkEuH.gif);
     background-repeat: no-repeat;
     background-position: right -29px
 }
@@ -1358,7 +1358,7 @@ a#re-albumtrig:hover {
 .re-inpost {
     padding-right: 69px;
     margin-right: -20px;
-    background: url(../images/20150629161806_likcx_2.gif) right -2px no-repeat;
+    background: url(http://img4q.duitang.com/uploads/people/201506/29/20150629161806_LikCX.gif) right -2px no-repeat;
     color: #666
 }
 
@@ -1368,7 +1368,7 @@ a#re-albumtrig:hover {
 
 .re-postsuc {
     padding-left: 40px;
-    background: url(../images/20150629171947_8l2yu_2.gif) -3px -130px no-repeat;
+    background: url(http://img4q.duitang.com/uploads/people/201506/29/20150629171947_8L2YU.gif) -3px -130px no-repeat;
     color: #666
 }
 
@@ -1600,7 +1600,7 @@ img.album-header-bg {
     height: 24px;
     margin-top: -2px;
     margin-right: 2px;
-    background-image: url(../images/20140528162525_djtau_2.png);
+    background-image: url(http://img5.duitang.com/uploads/people/201405/28/20140528162525_djtAu.png);
     background-repeat: no-repeat;
     background-position: 0 0
 }
@@ -1621,7 +1621,7 @@ img.album-header-bg {
 }
 
 .albumlikebtn i {
-    background-image: url(../images/20140526133240_rmvvc_2.png);
+    background-image: url(http://img5.duitang.com/uploads/people/201405/26/20140526133240_RmVVc.png);
     background-position: -6px -3px;
     display: inline-block;
     margin-top: -3px
@@ -1630,7 +1630,7 @@ img.album-header-bg {
 .album-post i,
 .album-share i {
     display: inline-block;
-    background-image: url(../images/20140110112106_setrj_2.png)
+    background-image: url(http://img5.duitang.com/uploads/people/201401/10/20140110112106_SeTRJ.png)
 }
 
 .albumlikebtn.albumliked i {
@@ -1668,7 +1668,7 @@ img.album-header-bg {
 .album-edit a i,
 .album-share-list a,
 .albumshowstyle a {
-    background-image: url(../images/20140110112106_setrj_2.png);
+    background-image: url(http://img5.duitang.com/uploads/people/201401/10/20140110112106_SeTRJ.png);
     background-repeat: no-repeat
 }
 

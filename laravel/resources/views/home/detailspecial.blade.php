@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="{{url('css/lib.558869d2.css')}}">
     <link rel="stylesheet" type="text/css" href="{{url('css/lib.8551015b.css')}}">
     <script src="{{url('js/lib.bundle.a6ecd17d.js')}}"></script>
+{{--    <script src="{{url('js/albumDetail.0946dd7c.js')}}"></script>--}}
     <style>
         .album-info span{
             color:white;
@@ -100,24 +101,27 @@
         </table>
         <div class="album-header-attr-mask"></div>
         <div class="album-header-attr tc">
-            <a target="_blank" class="album-account" href="">
-                <img class="avatar" src="{{asset('public/').'/'.$special['pic']}}">
+            <a class="album-account" href="{{url('user/gopersonal')}}">
+                <img class="avatar" src="{{asset('public/').'/'.$head}}">
                 <span class="name" style="color:white;">{{Session()->get('username')}}</span>
             </a>
             <div class="album-action dib">
-                <a title="发布" id="add" class="album-post" href="javascript:;"><i></i><span style="color:white;font-weight: bold;">发布</span></a>
-                <div id="album-share" class="album-share" href="javascript:;" >
-                    <i ></i>
-                    <span id="album-share-list" class="album-share-list clr" style="display: none; width: 0px;">
-<span>分享：</span>
-<a class="sina" href="http://service.weibo.com/share/share.php?appkey=1152390549&amp;title=%E7%94%9F%E6%B4%BB%EF%BC%8C%E5%8E%BB%E5%A0%86%E7%B3%96%E6%9F%A5%E7%9C%8B%E6%9B%B4%E5%A4%9A%E4%B8%93%E8%BE%91%E2%86%92&amp;pic=https%3A%2F%2Fa-ssl.duitang.com%2Fuploads%2Fitem%2F201703%2F29%2F20170329114618_MmFe2.thumb.400_0.jpeg&amp;url=http%3A%2F%2Fwww.duitang.com%2Falbum%2F%3Fid%3D83320245" title="分享到新浪微博" target="_blank" ></a>
-<a class="txweibo" href="http://share.v.t.qq.com/index.php?c=share&amp;a=index&amp;url=http%3A%2F%2Fwww.duitang.com%2Falbum%2F%3Fid%3D83320245&amp;title=%E7%94%9F%E6%B4%BB%EF%BC%8C%E5%8E%BB%E5%A0%86%E7%B3%96%E6%9F%A5%E7%9C%8B%E6%9B%B4%E5%A4%9A%E4%B8%93%E8%BE%91%3E%3E%3E&amp;appkey=dad361aadb9948278afc268bd5617307&amp;pic=https%3A%2F%2Fa-ssl.duitang.com%2Fuploads%2Fitem%2F201703%2F29%2F20170329114618_MmFe2.thumb.400_0.jpeg" title="分享到腾讯微博" target="_blank"></a>
-<a class="qzone" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http%3A%2F%2Fwww.duitang.com%2Falbum%2F%3Fid%3D83320245&amp;title=%E5%A0%86%E7%B3%96%EF%BC%8D%E4%B8%93%E8%BE%91&amp;summary=%E7%94%9F%E6%B4%BB%EF%BC%8C%E5%8E%BB%E5%A0%86%E7%B3%96%E6%9F%A5%E7%9C%8B%E6%9B%B4%E5%A4%9A%E4%B8%93%E8%BE%91%3E%3E%3E&amp;pics=https%3A%2F%2Fa-ssl.duitang.com%2Fuploads%2Fitem%2F201703%2F29%2F20170329114618_MmFe2.thumb.400_0.jpeg" title="分享到QQ空间" target="_blank" ></a>
-<a class="douban" href="http://shuo.douban.com/!service/share?image=https%3A%2F%2Fa-ssl.duitang.com%2Fuploads%2Fitem%2F201703%2F29%2F20170329114618_MmFe2.thumb.400_0.jpeg&amp;href=http%3A%2F%2Fwww.duitang.com%2Falbum%2F%3Fid%3D83320245&amp;text=%E7%94%9F%E6%B4%BB%EF%BC%8C%E5%8E%BB%E5%A0%86%E7%B3%96%E6%9F%A5%E7%9C%8B%E6%9B%B4%E5%A4%9A%E4%B8%93%E8%BE%91%3E%3E%3E&amp;name=%E5%A0%86%E7%B3%96%EF%BC%8D%E4%B8%93%E8%BE%91" title="分享到豆瓣" target="_blank"></a>
-<a class="renren" href="http://widget.renren.com/dialog/share?resourceUrl=http%3A%2F%2Fwww.duitang.com%2Falbum%2F%3Fid%3D83320245&amp;description=%E7%94%9F%E6%B4%BB%EF%BC%8C%E5%8E%BB%E5%A0%86%E7%B3%96%E6%9F%A5%E7%9C%8B%E6%9B%B4%E5%A4%9A%E4%B8%93%E8%BE%91%3E%3E%3E&amp;title=%E5%A0%86%E7%B3%96%EF%BC%8D%E4%B8%93%E8%BE%91&amp;pic=https%3A%2F%2Fa-ssl.duitang.com%2Fuploads%2Fitem%2F201703%2F29%2F20170329114618_MmFe2.thumb.400_0.jpeg" title="分享到人人网" target="_blank"></a>
-</span>
+                <a title="发布" id="add" class="album-post" href="javascript:;">
+                    <i></i><span style="color:white;font-weight: bold;">发布</span></a>
+                <div id="album-share" class="album-share" href="javascript:;">
+                    <i></i>
+                    <span id="album-share-list" class="album-share-list clr" style="display: none; width: 184px;">
+                    <span>分享：</span>
+                        <a class="sina" href="http://service.weibo.com/share/share.php?appkey=1152390549&amp;title=%E7%94%9F%E6%B4%BB%EF%BC%8C%E5%8E%BB%E5%A0%86%E7%B3%96%E6%9F%A5%E7%9C%8B%E6%9B%B4%E5%A4%9A%E4%B8%93%E8%BE%91%E2%86%92&amp;pic=https%3A%2F%2Fa-ssl.duitang.com%2Fuploads%2Fitem%2F201703%2F29%2F20170329114618_MmFe2.thumb.400_0.jpeg&amp;url=http%3A%2F%2Fwww.duitang.com%2Falbum%2F%3Fid%3D83320245" title="分享到新浪微博" target="_blank" ></a>
+                        <a class="txweibo" href="http://share.v.t.qq.com/index.php?c=share&amp;a=index&amp;url=http%3A%2F%2Fwww.duitang.com%2Falbum%2F%3Fid%3D83320245&amp;title=%E7%94%9F%E6%B4%BB%EF%BC%8C%E5%8E%BB%E5%A0%86%E7%B3%96%E6%9F%A5%E7%9C%8B%E6%9B%B4%E5%A4%9A%E4%B8%93%E8%BE%91%3E%3E%3E&amp;appkey=dad361aadb9948278afc268bd5617307&amp;pic=https%3A%2F%2Fa-ssl.duitang.com%2Fuploads%2Fitem%2F201703%2F29%2F20170329114618_MmFe2.thumb.400_0.jpeg" title="分享到腾讯微博" target="_blank" ></a>
+                        <a class="qzone" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http%3A%2F%2Fwww.duitang.com%2Falbum%2F%3Fid%3D83320245&amp;title=%E5%A0%86%E7%B3%96%EF%BC%8D%E4%B8%93%E8%BE%91&amp;summary=%E7%94%9F%E6%B4%BB%EF%BC%8C%E5%8E%BB%E5%A0%86%E7%B3%96%E6%9F%A5%E7%9C%8B%E6%9B%B4%E5%A4%9A%E4%B8%93%E8%BE%91%3E%3E%3E&amp;pics=https%3A%2F%2Fa-ssl.duitang.com%2Fuploads%2Fitem%2F201703%2F29%2F20170329114618_MmFe2.thumb.400_0.jpeg" title="分享到QQ空间" target="_blank" ></a>
+                        <a class="douban" href="http://shuo.douban.com/!service/share?image=https%3A%2F%2Fa-ssl.duitang.com%2Fuploads%2Fitem%2F201703%2F29%2F20170329114618_MmFe2.thumb.400_0.jpeg&amp;href=http%3A%2F%2Fwww.duitang.com%2Falbum%2F%3Fid%3D83320245&amp;text=%E7%94%9F%E6%B4%BB%EF%BC%8C%E5%8E%BB%E5%A0%86%E7%B3%96%E6%9F%A5%E7%9C%8B%E6%9B%B4%E5%A4%9A%E4%B8%93%E8%BE%91%3E%3E%3E&amp;name=%E5%A0%86%E7%B3%96%EF%BC%8D%E4%B8%93%E8%BE%91" title="分享到豆瓣" target="_blank" ></a>
+                        <a class="renren" href="http://widget.renren.com/dialog/share?resourceUrl=http%3A%2F%2Fwww.duitang.com%2Falbum%2F%3Fid%3D83320245&amp;description=%E7%94%9F%E6%B4%BB%EF%BC%8C%E5%8E%BB%E5%A0%86%E7%B3%96%E6%9F%A5%E7%9C%8B%E6%9B%B4%E5%A4%9A%E4%B8%93%E8%BE%91%3E%3E%3E&amp;title=%E5%A0%86%E7%B3%96%EF%BC%8D%E4%B8%93%E8%BE%91&amp;pic=https%3A%2F%2Fa-ssl.duitang.com%2Fuploads%2Fitem%2F201703%2F29%2F20170329114618_MmFe2.thumb.400_0.jpeg" title="分享到人人网" target="_blank" ></a>
+                    </span>
                 </div>
             </div>
+
+
             <div class="album-tags">
                 <span class="tag-legend">标签：</span>
                 <span class="tag-area">
@@ -131,8 +135,8 @@
         </div>
         <div class="album-header-mask dn"></div>
     </div>
-    <div class="album-content">
-        <div id="woo-holder">
+    <div class="album-content" style="min-height:500px;">
+        {{--<div id="woo-holder" style="height:auto">--}}
             <a name="woo-anchor"></a>
             <div class="albumshowstyle clr dymswitch-0" style="opacity: 1;">
                 {{--<a title="列表显示" class="woo-swa cur woo-cur" href="javascript:;">列表展示</a>--}}
@@ -141,21 +145,20 @@
             </div>
             {{--<div class="woo-swb woo-cur" style="display: block;">--}}
                     <!-- 注释了改改改 -->
-                    <div  style="min-hetght:500px;width:1200px;margin:0 auto;margin-bottom:100px;">
+                    <div style="min-hetght:600px;width:1200px;margin:0 auto;">
                         @if(empty($detail))
-                            <div style="width:600px;margin:0 auto;margin-top:50px;">
-                                <a style="font-size:34px;color:#d7d7d7;font-weight:bold;">亲，该专辑空空如也，快去发布吧！</a>
+                            <div style="width:600px;margin:0 auto;margin-top:50px;height:300px;">
+                                <a style="font-size:36px;color:#a7a7a7;font-weight:bold;line-height:200px;">亲，该专辑空空如也，快去发布吧！</a>
                             </div>
                         @else
                             @foreach($detail as $d)
                                 {{--获取单张相片的id--}}
-                                <div style="width:250px;height:200px;border:2px dashed #d7d7d7;display:inline-block;">
-                                    <span class="getid" style="display:none;">{{$d['id']}}</span>
-                                    <span class="getdesc" style="display:none;">{{$d['desc']}}</span>
-                                        <img alt="" src="{{asset('public/').'/'.$d['pics']}}" style="height:125px;position:relative;left:15px;top:10px;">
+                                <div style="width:250px;height:200px;border:2px dashed #d7d7d7;display:inline-block;margin-left:10px;">
+                                    {{--<span class="getdesc" style="display:none;"data=""></span>--}}
+                                        <img alt="" src="{{asset('public/').'/'.$d['pics']}}" style="height:125px;width:222px;position:relative;left:15px;top:10px;">
                                     <div style="min-height:50px;"><p style="line-height: 50px;text-align: center;"><a style="color:black;font-weight:bold;">描述：</a>{{$d['desc']}}</p></div>
                                     <div style="height:40px;width:160px;margin:0 auto;margin-top:-10px;" class="foreach">
-                                        <span style="float:left;" class="edit"><a>修改</a></span>
+                                        <span style="float:left;" ><a class="edit" title="{{$d['id']}}" name="{{$d['desc']}}">修改</a></span>
                                         <span style="float:right"><a href="{{url('user/deldetailspecial',['id'=>$d['id']])}}" onclick="if(confirm('确定删除吗?')==false) return false;">删除</a></span>
                                     </div>
                                 </div>
@@ -318,7 +321,7 @@
 
 {{--<script src="{{url('js/albumDetail.0946dd7c.js')}}"></script>--}}
 <script>
-    //发布专辑详细信息，图片以及描述
+ // 发布专辑详细信息，图片以及描述
  $('#add').click(function(){
     $('#show').css('display','block');
  })
@@ -328,12 +331,12 @@ $('#close').click(function(){
 })
 </script>
 
+{{--一个专辑内的相片信息的修改，仅仅是描述--}}
 <script>
     $('.edit').click(function(){
         $('#openedit').css('display','block');
-        var desc=$('.getdesc').html();
-        var id=$('.getid').html();
-        alert(id);
+        var desc=$(this).attr('name');
+        var id=$(this).attr('title');
         $('.id').val(id);
         $('.desc').val(desc);
     })
@@ -341,6 +344,8 @@ $('#close').click(function(){
         $('#openedit').css('display','none');
     })
 </script>
+
+{{--整个专辑的修改，包括描述，标签等等--}}
 <script>
     $('#album-edit').click(function(){
         $('#popalbumedit').css('display','block');
@@ -355,6 +360,14 @@ $('#close').click(function(){
         $('.tagedit').val(content);
     })
 </script>
+<script>
+        $('#album-share').mouseenter(function() {
+            $('#album-share-list').show(300);
+        });
 
+    $('#album-share').mouseleave(function(){
+        $('#album-share-list').hide(300);
+    });
+</script>
 
 @endsection

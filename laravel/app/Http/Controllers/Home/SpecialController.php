@@ -14,9 +14,12 @@ class SpecialController extends Controller
    {
        //取出session中的用户id
        $user_id=Session()->get('user_id');
+       //取出用户的头像
+       $head=DB::table('headpics')->where('user_id',$user_id)->select('head')->get()->toArray();
+       $head=$head[0]->head;
        //根据用户id获取用户所有的专辑
        $allspecial=Special::where('user_id',$user_id)->get()->toArray();
-       return view('home.special')->with('allspecial',$allspecial);
+       return view('home.special')->with(['allspecial'=>$allspecial,'head'=>$head]);
    }
 
    public function Create(Request $request)
@@ -77,13 +80,17 @@ class SpecialController extends Controller
    //查看个人专辑的详细信息,这里的id是专辑的id
     public function Detail($id)
    {
+       $user_id=Session()->get('user_id');
+       $head=DB::table('headpics')->where('user_id',$user_id)->select('head')->get()->toArray();
+       $head=$head[0]->head;
        $detail=SpecialPics::where('special_id',$id)->get()->toArray();
 //       dd($detail);
        $special=Special::where('id',$id)->get()->toArray();
        $special=$special[0];
 //       dd($special);
        $tag=$special['tag'];
-      return view('home.detailspecial')->with(['detail'=>$detail,'tag'=>$tag,'special_id'=>$id,'special'=>$special]);
+       return view('home.detailspecial')->with(['detail'=>$detail,'head'=>$head,'tag'=>$tag,'special_id'=>$id,'special'=>$special]);
+
    }
     //添加个人专辑的详情
     public function AddDetail(Request $request)
@@ -99,8 +106,9 @@ class SpecialController extends Controller
         $specialpics->special_id=$special_id;
         $specialpics->pics=$pic;
         $result=$specialpics->save();
-//        dd($result);
-//        return redirect('user/godetailspecial')->with('id',$special_id);
+//        dd($special_id);
+//        使用重定向的话就要类似于拼接路径，把id带到地址栏里
+//        return redirect('user/godetailspecial')->with('id','aaaa');
         return back()->with('id',$special_id);
     }
 

@@ -52,8 +52,8 @@
                                 <input class="chk" type="checkbox" name="remember" id="poplogin-rem" value="" checked="">
                                 <label for="poplogin-rem">记住我</label><a href="" style="position: relative;left: 100px;">忘记密码？</a></div>
                             <div class="submit clr">
-                                <a class="abtn l" href="{{url('user/gologin')}}" id="loginbtn">
-                                    <button type="submit" class="pg-loginbtn"><u>登录</u></button>
+                                <a>
+                                    <button type="submit" class="pg-loginbtn" style="width: 200px;height:40px;background: #22B4F6;border:none;font-size:14px;color:white;font-weight:bold;margin-left:30px;cursor:pointer"><u>登录</u></button>
                                 </a>
                             </div>
                         </form>
