@@ -206,17 +206,17 @@
                         </div>
                         <div class="dt-vline"></div>
                         <div id="dt-add" class="dt-has-menu dt-head-cat">
-                            <a class="dt-add-btn" href="javascript:;">发布</a>
+                            <a class="dt-add-btn" href="">发布</a>
                             <div class="dt-menu">
                                 <div class="dt-menu-inner">
-                                    <a id="mynavtools-local" href="javascript:;">
-                                        <i></i> 上传图片
+                                    <a href="{{url('user/special')}}">
+                                        <i style=" background:url({{url('images/20141127151135_edqkk.png')}}) -241px -1px"></i> 上传图片
                                     </a>
-                                    <a id="mynavtools-src" href="">
-                                        <i></i> 抓取网页图片
+                                    <a href="">
+                                        <i style="background:url({{url('images/20141127151135_edqkk.png')}}) -211px -1px"></i> 抓取网页图片
                                     </a>
-                                    <a id="mynavtools-create" href="javascript:;">
-                                        <i></i> 创建专辑
+                                    <a href="{{url('user/special')}}">
+                                        <i style="background:url({{url('images/20141127151135_edqkk.png')}}) -271px -1px"></i> 创建专辑
                                     </a>
                                 </div>
                             </div>
