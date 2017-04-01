@@ -21,7 +21,7 @@ class SpecialController extends Controller
        $allspecial=Special::where('user_id',$user_id)->get()->toArray();
        return view('home.special')->with(['allspecial'=>$allspecial,'head'=>$head]);
    }
-
+//  创建个人专辑
    public function Create(Request $request)
    {
        //获取前台表单中的专辑名称，标签，描述等等
@@ -35,11 +35,13 @@ class SpecialController extends Controller
        if($name!='') {
            //如果接受的图片为空，就默认给一张图片
            if ($pic == '') {
-               $pic = '1.jpg';
+               $request->pic->move(public_path() . '/public', '1.jpg');
+
            } else {
                $pic = time() . '.jpg';
+               $request->pic->move(public_path() . '/public', $pic);
            }
-           $request->pic->move(public_path() . '/public', $pic);
+//           $request->pic->move(public_path() . '/public', $pic);
            //执行插入到数据库的操作
            $Special->user_id = $user_id;
            $Special->name = $name;

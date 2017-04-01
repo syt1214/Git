@@ -3,8 +3,11 @@
 @section('style')
     <script src="{{url('js/lib.bundle.a6ecd17d.js')}}"></script>
     <script src="{{url('js/personal.js')}}"></script>
-{{--    <script src="{{url('js/checkpass.js')}}"></script>--}}
-    <style type="text/css">
+    {{--天气的js文件--}}
+    <script src="{{url('js/jquery.min.js')}}"></script>
+    <script src="{{url('js/jquery.leoweather.min.js')}}"></script>
+
+    <style>
         .button {
             width: 80px;
             height: 40px;
@@ -32,7 +35,16 @@
     </style>
 @endsection
 @section('content')
+    {{--查看天气信息,天气不能选，但是自动定位--}}
+    <div class="welcome-info" style="width:800px;height:60px;margin:0 auto;text-align:center">
+        <div>尊敬的会员<span id="weather"></span></div>
+    </div>
 
+    <script type="text/javascript">
+        $('#weather').leoweather({format:'，{时段}好！<span id="colock">现在时间是：<strong>{年}年{月}月{日}日 星期{周} {时}:{分}:{秒}</strong>，</span> <b>{城市}天气:</b> {天气} {夜间气温}℃ ~ {白天气温}℃'});
+    </script>
+
+    {{--修改个人信息--}}
 <div id="content" style="margin-left:200px;">
     <div class="block" id="block">
         <div class="box">
@@ -149,7 +161,8 @@
                 </form>
             </div>
         </div>
-        <!-- edit_passwd -->
+
+        <!-- 编辑密码 -->
         <form action="{{url('user/setpass')}}" method="post" name="myform" id="myform">
             {{csrf_field()}}
         <div class="hset set-pwd set-password" id="set-password"style="display:none;">
@@ -197,6 +210,8 @@
                     </table>
                 </div>
             </form>
+        {{--修改密码结束--}}
+
         </div>
     </div>
 </div>

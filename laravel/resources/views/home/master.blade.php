@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta property="wb:webmaster" content="973d669418f79e8b" />
     <title>@yield('title','首页')</title>

@@ -154,7 +154,6 @@
                             @foreach($detail as $d)
                                 {{--获取单张相片的id--}}
                                 <div style="width:250px;height:200px;border:2px dashed #d7d7d7;display:inline-block;margin-left:10px;">
-                                    {{--<span class="getdesc" style="display:none;"data=""></span>--}}
                                         <img alt="" src="{{asset('public/').'/'.$d['pics']}}" style="height:125px;width:222px;position:relative;left:15px;top:10px;">
                                     <div style="min-height:50px;"><p style="line-height: 50px;text-align: center;"><a style="color:black;font-weight:bold;">描述：</a>{{$d['desc']}}</p></div>
                                     <div style="height:40px;width:160px;margin:0 auto;margin-top:-10px;" class="foreach">

@@ -164,6 +164,7 @@
         </div>
     </div>
 
+{{--创建想自己的专辑--}}
 <div class="blockUI blockMsg blockPage" id="create"style="z-index: 9011; position: fixed; padding: 0px; margin: -156px 0px 0px -330px; width: 660px; top: 50%; left: 50%; text-align: left; color: rgb(0, 0, 0); border: none; height: 272px; background: none;display:none;">
     <div class="mask-body" style="width: 660px;">
         <div class="tt-s"><span>创建专辑</span><a class="mask-close" id="close"target="_self" href="javascript:;" >关闭</a></div>
@@ -176,7 +177,7 @@
                         <tr>
                             <td width="60" align="right">专辑名</td>
                             <td>
-                                <input class="ipt" type="text" name="name" id="name"  maxlength="40">
+                                <input class="ipt" type="text" name="name" id="name"  maxlength="40"placeholder="亲，别忘了给你的专辑取个名字哦">
                                 <span id="nspan"></span>
                             </td>
                             <td rowspan="4">
@@ -216,7 +217,7 @@
                             <td>
                                 <div class="pr">
                                     <div class="divipt clr">
-                                        <input id="tag" class="l ipt mr8" autocomplete="off" type="text" name="tag" value="" maxlength="100" data-optional="1">
+                                        <input id="tag" class="l ipt mr8" autocomplete="off" type="text" name="tag" value="" maxlength="100" data-optional="1"placeholder="亲，请在右侧选择标签吧^*^">
                                     </div>
                                     <label for="popal-mbaddtagipt" id="popal-mbaddtag-lb" style="display: none;">多个标签用空格隔开</label>
                                 </div>
